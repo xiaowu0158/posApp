@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/list_item_border">
+    <!--商品名称包含（代码，品牌，版型，规格，条码） -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_weight="3"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="1dip"
+            android:textColor="#000000"
+            android:paddingTop="5dip"
+            android:textSize="15sp"
+            android:gravity="left"
+            android:text="MRRY66004FAA"
+            android:id="@+id/prodNameTextView"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="1dip"
+
+            android:textSize="11sp"
+            android:gravity="left"
+            android:text="代码：M16640004*VF71"
+            android:id="@+id/prodCodeTextView"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="5dip"
+
+            android:textSize="11sp"
+            android:gravity="left"
+            android:text="品牌：MAYOR，规格：175/80A"
+            android:id="@+id/brandSpecTextView"/>
+    </LinearLayout>
+    <View
+        android:layout_width="1.5dip"
+        android:layout_height="match_parent"
+        android:background="#B4B3B3"/>
+    <!--单价 -->
+    <TextView
+        android:layout_width="0dip"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:paddingBottom="10dip"
+        android:textColor="#000000"
+        android:paddingTop="5dip"
+        android:textSize="15sp"
+        android:gravity="center"
+        android:text="100"
+        android:id="@+id/unitPriceTextView"/>
+    <View
+        android:layout_width="1.5dip"
+        android:layout_height="match_parent"
+        android:background="#B4B3B3"/>
+    <!--折扣（包含 VIP） -->
+    <TextView
+        android:layout_width="0dip"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:paddingBottom="10dip"
+        android:textColor="#000000"
+        android:paddingTop="5dip"
+        android:textSize="15sp"
+        android:gravity="center"
+        android:text="折扣"
+        android:id="@+id/disCountTextView"/>
+    <View
+        android:layout_width="1.5dip"
+        android:layout_height="match_parent"
+        android:background="#B4B3B3"/>
+    <!--折后价 -->
+    <TextView
+        android:layout_width="0dip"
+        android:layout_height="match_parent"
+        android:layout_weight="1.5"
+        android:paddingBottom="10dip"
+        android:textColor="#000000"
+        android:paddingTop="5dip"
+        android:textSize="15sp"
+        android:gravity="center"
+        android:text="80"
+        android:id="@+id/fnlPriceTextView"/>
+    <View
+        android:layout_width="1.5dip"
+        android:layout_height="match_parent"
+        android:background="#B4B3B3"/>
+    <!--数量（包含加减操作）
+    <TextView
+        android:layout_width="0dip"
+        android:layout_height="wrap_content"
+        android:layout_weight="3"
+        android:paddingBottom="10dip"
+        android:textColor="#000000"
+        android:paddingTop="5dip"
+        android:textSize="15sp"
+        android:gravity="center"
+        android:text="数量" />
+        -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="fill_parent"
+        android:layout_weight="2"
+        android:paddingBottom="10dip"
+        android:paddingTop="5dp"
+        android:orientation="horizontal"
+        android:gravity="center">
+        <TextView
+            android:id="@+id/qtySubTextView"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/text_angle_gray"
+            android:gravity="center"
+            android:text="一"
+            android:textColor="@color/grey_color1"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/qtyTextView"
+            android:layout_width="50dp"
+            android:layout_height="30dp"
+            android:background="@drawable/text_angle"
+            android:gravity="center"
+
+            android:text="1"
+            android:textColor="@color/grey_color1"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/qtyAddTextView"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/text_angle_right"
+            android:gravity="center"
+            android:text="+"
+            android:textColor="@color/grey_color1"
+            android:textSize="16sp" />
+
+
+    </LinearLayout>
+    <View
+        android:layout_width="1.5dip"
+        android:layout_height="match_parent"
+        android:background="#B4B3B3"/>
+    <!--金额 -->
+    <TextView
+        android:layout_width="0dip"
+        android:layout_height="match_parent"
+        android:layout_weight="1.5"
+        android:paddingBottom="10dip"
+        android:textColor="#000000"
+        android:paddingTop="5dip"
+        android:textSize="15sp"
+        android:gravity="center"
+        android:text="100"
+        android:id="@+id/fnlValTextView"/>
+    <View
+        android:layout_width="1.5dip"
+        android:layout_height="match_parent"
+        android:background="#B4B3B3"/>
+    <!--删除行按钮 -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:paddingBottom="10dip"
+        android:paddingTop="5dp"
+        android:orientation="horizontal"
+        android:gravity="center">
+        <TextView
+            android:id="@+id/deleteLineTextView"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/text_angle_gray"
+            android:gravity="center"
+            android:text="一"
+            android:textColor="@color/grey_color1"
+            android:textSize="16sp"
+            android:layout_gravity="center"
+            />
+    </LinearLayout>
+</LinearLayout>

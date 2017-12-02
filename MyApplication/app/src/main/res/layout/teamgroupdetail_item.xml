@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_weight="4.0"
+        android:background="@drawable/textview_border"
+        android:paddingRight="6.0dip"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:id="@+id/team_line">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/teamNameTextView"
+            android:textSize="15sp"
+            android:textColor="@color/colorPrimary"
+            android:layout_gravity="left"
+            android:text="江东伟"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="15dp"
+            android:id="@+id/teamDesc"
+            android:layout_gravity="left"
+            android:textSize="13sp"
+            android:text="ERP部"/>
+
+    </LinearLayout>
+
+
+    <EditText android:textSize="15sp"
+        android:textColor="#ff434343"
+        android:background="@drawable/textview_border"
+
+        android:layout_height="fill_parent"
+        android:gravity="center"
+        android:paddingRight="10.0dip"
+        android:paddingLeft="10.0dip"
+        android:hint="加减档"
+        android:digits="1234567890+-"
+        android:id="@+id/teamCurrentValue"
+        android:layout_width="wrap_content" />
+</LinearLayout>

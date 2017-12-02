@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/product_listItem"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="#ffffffff">
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:padding="1dip">
+                <ImageView
+                    android:src="@drawable/non"
+                    android:layout_height="150dp"
+                    android:layout_width="wrap_content"
+                    android:id="@+id/prodImageView1"
+                    android:adjustViewBounds="true">
+                </ImageView>
+                <TextView
+                    android:textSize="16.0sp"
+                    android:textColor="#ff000000"
+                    android:id="@+id/prdCode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3.0dip"
+                    android:text="货号代码："
+                    />
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="3.0dip"
+                android:layout_weight="2"
+                android:paddingTop="8.0dip">
+                <TextView
+                    android:textSize="16.0sp"
+                    android:textColor="#ff000000"
+                    android:id="@+id/ordNo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3.0dip"
+                    android:text="订单号："
+                    />
+                <TextView
+                    android:textSize="16.0sp"
+                    android:textColor="#ff000000"
+                    android:id="@+id/prodName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3.0dip"
+                    android:text="货号："
+                    />
+                <TextView
+                    android:textSize="16.0sp"
+                    android:textColor="#ff000000"
+                    android:id="@+id/prodMemo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="120dp"
+                    android:layout_marginTop="3.0dip"
+                    android:text="款式描述："
+                    />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="10.0dip"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/list_item_border"
+            android:clickable="true"
+            >
+
+            <TextView
+                android:textAppearance="?android:textAppearanceMedium"
+                android:textSize="16.0sp"
+                android:paddingRight="6.0dip"
+                android:layout_width="0.0px"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="6.0dip"
+                android:maxLines="2"
+                android:layout_weight="1.0"
+                android:text="选择套装样式"
+                android:textColor="#ff000000"
+                android:id="@+id/suiteGrpId"
+                />
+
+            <ImageView android:layout_gravity="center_vertical"
+                android:paddingRight="6.0dip"
+                android:duplicateParentState="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/arrow" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="10.0dip"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/list_item_border"
+            android:clickable="false"
+            android:id="@+id/team_memo_linear"
+            >
+
+            <TextView
+                android:textAppearance="?android:textAppearanceMedium"
+                android:textSize="14.0sp"
+                android:paddingRight="2.0dip"
+                android:layout_width="0.0px"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="6.0dip"
+
+                android:layout_weight="1.0"
+                android:text="术语备注信息"
+                android:textColor="@color/colorPrimary"
+                android:id="@+id/team_memo"
+
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:id="@+id/btn_layout"
+            android:layout_width="fill_parent"
+            android:layout_height="50.0dip"
+
+            android:layout_marginTop="5.0dip"
+            android:layout_marginBottom="12.0dip">
+
+            <Button
+                android:textSize="16.0dip"
+                android:textColor="#fffffffe"
+                android:id="@+id/ksLtButton"
+                android:background="@drawable/ft_dialog_red_btn_selector"
+                android:layout_width="fill_parent"
+                android:layout_height="42.0dip"
+
+                android:text="开始量体"
+                android:layout_weight="1.0" />
+        </LinearLayout>
+    </LinearLayout>
+
+
+</RelativeLayout>

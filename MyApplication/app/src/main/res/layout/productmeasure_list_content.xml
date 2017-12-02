@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+
+    <Button
+        android:id="@+id/productMeasureListButton"
+        style="@style/frame_button"
+        android:text="上衣"
+        />
+
+    <LinearLayout
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="10.0dip"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/list_item_border"
+        android:clickable="false"
+        android:id="@+id/team_memo_linear"
+        android:visibility="gone"
+        >
+
+        <TextView
+            android:textAppearance="?android:textAppearanceMedium"
+            android:textSize="14.0sp"
+            android:paddingRight="2.0dip"
+            android:layout_width="0.0px"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="6.0dip"
+
+            android:layout_weight="1.0"
+            android:text="术语备注信息"
+            android:textColor="@color/colorPrimary"
+            android:id="@+id/team_memo"
+
+            />
+    </LinearLayout>
+</LinearLayout>

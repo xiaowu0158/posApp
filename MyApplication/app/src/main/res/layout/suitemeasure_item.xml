@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_gravity="center_horizontal"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content">
+    <!-- 开始内容 -->
+    <LinearLayout android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5.0dip"
+        >
+        <TextView
+            android:id="@+id/suiteMeasure_title"
+            android:textSize="16.0sp"
+            android:textColor="#ff5cacee"
+            android:padding="3.0dip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="上衣信息" />
+        <TextView
+            android:id="@+id/prodCatName"
+            android:textSize="16.0sp"
+            android:textColor="#fa0606"
+            android:padding="3.0dip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="18dip"
+            android:text="大类" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="5.0dip"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/list_item_border"
+        android:id="@+id/selectSpecGrpRelative"
+        android:clickable="true"
+        >
+
+
+        <TextView
+            android:id="@+id/selectSpecGrpTextView"
+            android:textAppearance="?android:textAppearanceMedium"
+            android:textSize="16.0sp"
+            android:paddingRight="6.0dip"
+            android:layout_width="0.0px"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="1.0dip"
+            android:maxLines="2"
+            android:layout_weight="1.0"
+            android:textColor="#ff000000"
+            android:text="选择规格甄别" />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="matrix"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/mm_submenu" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="5.0dip"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/list_item_border"
+        android:id="@+id/selectSpecLinearLayout"
+        android:clickable="true"
+        >
+
+
+        <TextView
+            android:id="@+id/selectSpecTextView"
+            android:textAppearance="?android:textAppearanceMedium"
+            android:textSize="16.0sp"
+            android:paddingRight="6.0dip"
+            android:layout_width="0.0px"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="1.0dip"
+            android:maxLines="2"
+            android:layout_weight="1.0"
+            android:textColor="#ff000000"
+            android:text="选择款式规格"
+
+            />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="matrix"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/mm_submenu" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="5.0dip"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/list_item_border"
+        android:id="@+id/selectTermLinearLayout"
+        android:clickable="true"
+        >
+
+
+        <TextView
+            android:id="@+id/selectTermTextView"
+            android:textAppearance="?android:textAppearanceMedium"
+            android:textSize="16.0sp"
+            android:paddingRight="6.0dip"
+            android:layout_width="0.0px"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="1.0dip"
+            android:maxLines="2"
+            android:layout_weight="1.0"
+            android:textColor="#ff000000"
+            android:text="选择特体术语信息"
+
+            />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="matrix"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/mm_submenu"
+            android:visibility="visible"
+            android:id="@+id/team_submenu"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="matrix"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/mm_submenu1"
+            android:id="@+id/team_submenu_down"
+            android:visibility="gone"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/measure_detailTeamMemo"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="5.0dip"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/list_item_border"
+        android:visibility="gone">
+        <TextView
+            android:textAppearance="?android:textAppearanceMedium"
+            android:textSize="16.0sp"
+            android:paddingRight="6.0dip"
+            android:layout_width="0.0px"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="1.0dip"
+
+            android:layout_weight="1.0"
+            android:text="术语信息"
+            android:textColor="@color/colorPrimary"
+            android:id="@+id/measure_detailTeamMemoTextView"
+            />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10.0dip">
+        <include layout="@layout/listview_foot"/>
+        <ListView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:cacheColorHint="#FFF4F4F4"
+            android:dividerHeight="0.0dip"
+            android:fadingEdge="none"
+            android:id="@+id/suiteMeasure_teamListView"
+            android:visibility="gone">
+
+        </ListView>
+
+    </LinearLayout>
+    <!-- 结束内容 -->
+</LinearLayout>

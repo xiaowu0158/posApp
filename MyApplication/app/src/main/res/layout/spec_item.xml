@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/spec_item_line"
+        android:background="@xml/shape1"
+        android:gravity="center"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/spec_item"
+            android:textSize="15sp"
+            android:textColor="@color/colorPrimary"
+
+            android:layout_gravity="left"
+            android:text="江东伟"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:id="@+id/spec_desc"
+            android:layout_gravity="left"
+            android:textSize="11sp"
+            android:text="ERP部"/>
+
+    </LinearLayout>
+
+

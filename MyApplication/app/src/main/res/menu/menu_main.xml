@@ -1,0 +1,30 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.wuhongjie.myapplication.MainActivity">
+    <item
+        android:id="@+id/action_settings"
+        android:orderInCategory="100"
+        android:title="客户设置"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_emp_settings"
+        android:orderInCategory="100"
+        android:title="顾客设置"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_testing"
+        android:orderInCategory="100"
+        android:title="页面测试"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_counter"
+        android:orderInCategory="100"
+        android:title="收银"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_homepage"
+        android:orderInCategory="100"
+        android:title="收银台"
+        app:showAsAction="never" />
+</menu>

@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_sync"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    tools:context="com.example.wuhongjie.myapplication.SyncActivity">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:background="#ffe2e2e2"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:weightSum="1"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+
+        android:layout_width="fill_parent"
+        android:layout_height="50.0dip"
+        android:layout_marginLeft="16.0dip"
+        android:layout_marginTop="50dip"
+        android:layout_marginRight="16.0dip"
+        android:layout_marginBottom="12.0dip"
+        android:layout_weight="0.11">
+
+        <Button
+            android:textSize="16.0dip"
+            android:textColor="#fffffffe"
+            android:id="@+id/upLoadButton"
+            android:background="@drawable/ft_dialog_red_btn_selector"
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="5.0dip"
+            android:text="同步到DRP"
+            android:layout_weight="1.0" />
+    </LinearLayout>
+    <LinearLayout
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16.0dip"
+        android:layout_marginTop="110dip"
+        android:layout_marginRight="16.0dip"
+        android:layout_marginBottom="12.0dip"
+        android:layout_weight="0.06">
+
+        <Button
+            android:textSize="16.0dip"
+            android:textColor="#fffffffe"
+            android:id="@+id/downLoadButton"
+            android:background="@drawable/ft_dialog_red_btn_selector"
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="5.0dip"
+            android:text="DRP数据下载"
+            android:layout_weight="1.0" />
+        <FrameLayout
+            android:id="@+id/downLoadingFrameLayout"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:paddingLeft="5dip"
+            android:paddingRight="5dip"
+            android:orientation="horizontal"
+            android:visibility="gone">
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left|center"
+                android:layout_marginRight="36dip"
+                android:hint="DRP数据下载正在执行..."/>
+            <ProgressBar
+                style="@style/loading_small"
+                android:layout_gravity="right|center"
+                android:layout_marginRight="8dip"
+                />
+        </FrameLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+
+        android:layout_width="fill_parent"
+        android:layout_height="50.0dip"
+        android:layout_marginLeft="16.0dip"
+        android:layout_marginTop="170dip"
+        android:layout_marginRight="16.0dip"
+        android:layout_marginBottom="12.0dip"
+        android:layout_weight="0.11">
+
+        <Button
+            android:textSize="16.0dip"
+            android:textColor="#fffffffe"
+            android:id="@+id/downLoadCustButton"
+            android:background="@drawable/ft_dialog_red_btn_selector"
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="5.0dip"
+            android:text="顾客数据下载"
+            android:layout_weight="1.0" />
+    </LinearLayout>
+    <LinearLayout
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+
+        android:layout_width="fill_parent"
+        android:layout_height="50.0dip"
+        android:layout_marginLeft="16.0dip"
+        android:layout_marginTop="230dip"
+        android:layout_marginRight="16.0dip"
+        android:layout_marginBottom="12.0dip"
+        android:layout_weight="0.11">
+
+        <Button
+            android:textSize="16.0dip"
+            android:textColor="#fffffffe"
+            android:id="@+id/downLoadOrderProdButton"
+            android:background="@drawable/ft_dialog_red_btn_selector"
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="5.0dip"
+            android:text="订单款式数据下载"
+            android:layout_weight="1.0" />
+    </LinearLayout>
+    <LinearLayout
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+
+        android:layout_width="fill_parent"
+        android:layout_height="50.0dip"
+        android:layout_marginLeft="16.0dip"
+        android:layout_marginTop="290dip"
+        android:layout_marginRight="16.0dip"
+        android:layout_marginBottom="12.0dip"
+        android:layout_weight="0.11">
+
+        <Button
+            android:textSize="16.0dip"
+            android:textColor="#fffffffe"
+            android:id="@+id/downLoadSpecButton"
+            android:background="@drawable/ft_dialog_red_btn_selector"
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="5.0dip"
+            android:text="套装规格数据下载"
+            android:layout_weight="1.0" />
+    </LinearLayout>
+    <LinearLayout
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+
+        android:layout_width="fill_parent"
+        android:layout_height="50.0dip"
+        android:layout_marginLeft="16.0dip"
+        android:layout_marginTop="350dip"
+        android:layout_marginRight="16.0dip"
+        android:layout_marginBottom="12.0dip"
+        android:layout_weight="0.11">
+
+        <Button
+            android:textSize="16.0dip"
+            android:textColor="#fffffffe"
+            android:id="@+id/downLoadSpecLinkButton"
+            android:background="@drawable/ft_dialog_red_btn_selector"
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="5.0dip"
+            android:text="规格关联数据下载"
+            android:layout_weight="1.0" />
+    </LinearLayout>
+    <LinearLayout
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16.0dip"
+        android:layout_marginTop="410dip"
+        android:layout_marginRight="16.0dip"
+        android:layout_marginBottom="12.0dip"
+        android:layout_weight="0.06">
+
+        <Button
+            android:textSize="16.0dip"
+            android:textColor="#fffffffe"
+            android:id="@+id/clearButton"
+            android:background="@drawable/ft_dialog_red_btn_selector"
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="5.0dip"
+            android:text="清除缓存"
+            android:layout_weight="1.0" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="470dip">
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:max="100"
+            android:progress="0"
+            android:visibility="visible" />
+        <TextView
+            android:text="就绪..."
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/progressValue"/>
+    </LinearLayout>
+
+
+</RelativeLayout>

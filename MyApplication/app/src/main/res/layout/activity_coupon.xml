@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_coupon"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.wuhongjie.myapplication.CouponActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <FrameLayout
+            android:id="@+id/fl_coupon_container"
+            android:layout_width="fill_parent"
+            android:layout_height="0.0dip"
+            android:layout_weight="1.0" >
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:gravity="center"
+                android:orientation="vertical" >
+                <TextView
+                    android:layout_width="500dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10.0dip"
+                    android:text="整单优惠不支持单品退货"
+                    android:textColor="@color/line_color"
+                    android:textSize="20.0sp" />
+                <EditText
+                    android:id="@+id/coupon_editer"
+                    android:layout_width="500dp"
+                    android:layout_height="60dip"
+                    android:layout_gravity="center"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:imeOptions="actionSearch"
+                    android:background="@xml/editsharp"
+                    android:hint="输入整单定额金额"/>
+                <android.inputmethodservice.KeyboardView
+                    android:id="@+id/keyboardView_favorable"
+                    android:layout_width="500dp"
+                    android:layout_height="fill_parent"
+                    android:background="@color/bg_gray"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:keyBackground="@drawable/button_key_select"
+                    android:keyTextColor="@color/text_black"
+                    android:keyTextSize="27.0sp"
+                    android:shadowColor="@color/white"
+                    android:shadowRadius="0.0"
+                    android:layout_marginBottom="10dp"
+                    android:visibility="visible" />
+            </LinearLayout>
+        </FrameLayout>
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="2.0px"
+            android:background="@color/line_color" />
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="80dp"
+            android:background="@color/line_color" >
+
+            <TextView
+                style="@style/style_favorable"
+                android:layout_marginLeft="10dp"
+                android:text="整单应付" />
+
+            <TextView
+                android:id="@+id/tv_order_favorable"
+                style="@style/style_favorable_money"
+                android:text="" />
+
+            <TextView
+                style="@style/style_favorable"
+                android:layout_marginLeft="10dp"
+                android:text="定额金额" />
+
+            <TextView
+                android:id="@+id/tv_points_exchange"
+                style="@style/style_favorable_money"
+                android:text="" />
+
+            <TextView
+                style="@style/style_favorable"
+                android:layout_marginLeft="10dp"
+                android:text="整单折让" />
+
+            <TextView
+                android:id="@+id/tv_store_promotion"
+                style="@style/style_favorable_money"
+                android:text="" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <Button
+                    android:id="@+id/btn_submit"
+                    android:layout_width="100dp"
+                    android:layout_height="60dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:text="确定"
+                    android:textColor="@color/white"
+                    android:textSize="24.0sp"
+                    android:layout_marginEnd="8dp" />
+
+                <Button
+                    android:id="@+id/btn_cancel"
+                    android:layout_width="100dp"
+                    android:layout_height="60dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@+id/btn_submit"
+                    android:text="取消"
+                    android:textColor="@color/text_black"
+                    android:textSize="24.0sp"
+                 />
+            </RelativeLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

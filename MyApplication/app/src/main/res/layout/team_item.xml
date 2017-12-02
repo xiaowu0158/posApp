@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:background="#ffffffff"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content" android:stretchColumns="0">
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/team_row">
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:layout_width="wrap_content">
+            <LinearLayout
+                android:layout_height="wrap_content"
+                android:layout_weight="4.0"
+                android:background="@drawable/textview_border"
+                android:paddingRight="6.0dip"
+                android:orientation="vertical"
+                android:layout_width="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/teamNameTextView"
+                    android:textSize="15sp"
+                   android:textColor="@color/colorPrimary"
+                   android:layout_gravity="left"
+                   android:text="江东伟"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="15dp"
+                    android:id="@+id/teamDesc"
+                    android:layout_gravity="left"
+                    android:textSize="13sp"
+                    android:text="ERP部"/>
+
+            </LinearLayout>
+
+
+            <EditText android:textSize="15sp"
+                android:textColor="#ff434343"
+                android:background="@drawable/textview_border"
+
+                android:layout_height="fill_parent"
+                android:gravity="center"
+                android:paddingRight="6.0dip"
+                android:hint="加减档"
+
+                android:id="@+id/teamCurrentValue"
+                android:layout_width="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="100dip"
+            android:layout_height="fill_parent"
+            android:layout_alignParentLeft="true"
+            android:background="@drawable/textview_border"
+            android:paddingRight="6.0dip"
+            >
+
+            <Button
+                android:textSize="15.0dip"
+                android:textColor="#ffffffff"
+                android:background="@drawable/frame_button_bg"
+                android:layout_width="80dip"
+                android:layout_height="30dp"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="2dp"
+                android:id="@+id/teamButton"
+                android:text="选择"/>
+        </LinearLayout>
+
+    </TableRow>
+</TableLayout>
+

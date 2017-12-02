@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="listitem_transparent">#00000000</color>
+    <color name="listitem_black">#ff000000</color>
+    <color name="listitem_gray">#ff9da19e</color>
+    <color name="head_text">#0e5986</color>
+    <color name="frame_button_text_nor">#033a5c</color>
+    <color name="frame_button_text_select">#FFFFFF</color>
+    <!-- 灰色 -->
+    <color name="bg_Gray">#CCCCCC</color>
+    <color name="dark_70">#c0000000</color>
+    <!-- 浅灰色 -->
+    <color name="bg_Gray_light">#EEEEEE</color>
+    <color name="page_backgroup">#f2f2f2</color>
+    <color name="grey_color1">#333333</color>
+    <color name="color_cccccc">#ffcccccc</color>
+    <color name="white">#ffffffff</color>
+    <color name="bg_orange_click">#ffed8b00</color>
+    <color name="bg_orange">#ffff9600</color>
+    <color name="bg_green">#ffa4cb08</color>
+    <color name="bg_green_click">#ff98bd07</color>
+    <color name="bg_blue">#ff05b840</color>
+    <color name="bg_blue_click">#ff02ab3a</color>
+    <color name="bg_gray">#ffcccccc</color>
+    <color name="bg_gray_click">#ffbbbbbb</color>
+    <color name="bg_yellow">#fff8cf12</color>
+    <color name="bg_yellow_click">#ffe9c001</color>
+    <color name="bg_two_blue">#ff04c0d1</color>
+    <color name="bg_two_blue_clik">#ff01abba</color>
+    <color name="bg_two_green">#ff05b840</color>
+    <color name="bg_two_green_click">#ff05ab3b</color>
+    <color name="text_black">#ff333333</color>
+    <color name="edit_graybg">#fff2f2f2</color>
+    <color name="line_color">#ffdddddd</color>
+    <color name="text_orange">#ffff5a00</color>
+</resources>

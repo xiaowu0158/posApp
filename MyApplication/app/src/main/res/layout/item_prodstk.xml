@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/list_item_border">
+    <!--商品名称包含（代码，品牌，版型，规格，条码） -->
+    <View
+        android:layout_width="1.5dp"
+        android:layout_height="match_parent"
+        android:background="#4fa5d5"/>
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_weight="2"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="1dip"
+            android:textColor="#000000"
+            android:paddingTop="5dip"
+            android:textSize="15sp"
+            android:layout_gravity="left"
+            android:text="MRRY66004FAA"
+            android:id="@+id/prodNameTextView"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="1dip"
+
+            android:textSize="12sp"
+            android:layout_gravity="left"
+            android:text="代码：M16640004*VF71"
+            android:id="@+id/prodCodeTextView"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="1dip"
+
+            android:textSize="12sp"
+            android:layout_gravity="left"
+            android:text="条码：M16640004*VF71"
+            android:id="@+id/intlBcTextView"/>
+    </LinearLayout>
+    <View
+        android:layout_width="1.5dip"
+        android:layout_height="match_parent"
+        android:background="#B4B3B3"/>
+    <!--品牌 -->
+    <TextView
+        android:layout_width="0dip"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:paddingBottom="10dip"
+        android:textColor="#000000"
+        android:paddingTop="5dip"
+        android:textSize="15sp"
+        android:gravity="center"
+        android:text="YOUNGOR"
+        android:id="@+id/brandNameTextView"/>
+    <View
+        android:layout_width="1.5dip"
+        android:layout_height="match_parent"
+        android:background="#B4B3B3"/>
+    <!--分类 -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="1dip"
+            android:textColor="#000000"
+            android:paddingTop="5dip"
+            android:textSize="12sp"
+            android:layout_gravity="left"
+            android:gravity="center"
+            android:text="小类：毛衫"
+            android:id="@+id/prodCatNameTextView"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="1dip"
+            android:textSize="12sp"
+            android:layout_gravity="left"
+
+            android:text="大类：西服"
+            android:id="@+id/parnCatNameTextView"
+           />
+
+    </LinearLayout>
+    <View
+        android:layout_width="1.5dip"
+        android:layout_height="match_parent"
+        android:background="#B4B3B3"/>
+    <!--规格-->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="1dip"
+            android:textColor="#000000"
+            android:paddingTop="5dip"
+            android:textSize="15sp"
+            android:layout_gravity="left"
+            android:text="规格"
+            android:id="@+id/specNameTextView"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="1dip"
+
+            android:textSize="12sp"
+            android:layout_gravity="left"
+            android:text="规格代码"
+            android:id="@+id/specCodeTextView"
+            />
+
+    </LinearLayout>
+    <View
+        android:layout_width="1.5dip"
+        android:layout_height="match_parent"
+        android:background="#B4B3B3"/>
+
+    <TextView
+        android:layout_width="0dip"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:paddingBottom="10dip"
+        android:textColor="#000000"
+        android:paddingTop="5dip"
+        android:textSize="15sp"
+        android:gravity="center"
+        android:text="挂牌价"
+        android:id="@+id/lstPriceTextView"/>
+    <View
+        android:layout_width="1.5dip"
+        android:layout_height="match_parent"
+        android:background="#B4B3B3"/>
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:paddingRight="5dp"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="1dip"
+            android:textColor="#000000"
+            android:paddingTop="5dip"
+            android:textSize="15sp"
+            android:layout_gravity="right"
+            android:text="可用"
+            android:id="@+id/qtyExpdTextView"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="1dip"
+            android:textSize="12sp"
+            android:layout_gravity="right"
+            android:text="已配"
+            android:id="@+id/qtyCmtdTextView"
+            />
+
+    </LinearLayout>
+    <View
+        android:layout_width="1.5dp"
+        android:layout_height="match_parent"
+        android:background="#4fa5d5"/>
+</LinearLayout>
