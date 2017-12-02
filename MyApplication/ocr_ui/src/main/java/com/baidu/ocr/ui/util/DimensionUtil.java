@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2017 Baidu, Inc. All Rights Reserved.
+ * Copyright (C) 20防范17 Baidu, Inc. All Rights Reserved.
  */
 package com.baidu.ocr.ui.util;
 
