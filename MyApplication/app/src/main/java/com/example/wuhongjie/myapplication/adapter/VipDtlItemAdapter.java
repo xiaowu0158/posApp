@@ -17,7 +17,7 @@ import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 
 /**
- * Created by wuhongjie on 2017-02-28.
+ * Created by 小五 on 2017-02-28.
  */
 @SuppressWarnings("ResourceType")
 public class VipDtlItemAdapter extends BaseAdapter{
