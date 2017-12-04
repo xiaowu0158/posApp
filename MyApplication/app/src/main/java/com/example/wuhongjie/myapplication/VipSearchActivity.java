@@ -2,6 +2,7 @@ package com.example.wuhongjie.myapplication;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.inputmethodservice.Keyboard;
@@ -42,6 +43,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class VipSearchActivity extends AppCompatActivity {
+    private Dialog mWeiboDialog;
     private Handler mSearchHandler;
     private ClientSession session = null;
     private static int VIP_POST = 2901;
@@ -66,7 +68,8 @@ public class VipSearchActivity extends AppCompatActivity {
         mSearchHandler = new Handler() {
             public void handleMessage(Message msg) {
                 if (msg.arg1 == DxSessionHelper.SESSION_ERROR) {
-                    waiterBar.setVisibility(View.GONE);
+                   // waiterBar.setVisibility(View.GONE);
+                    WeiboDialogUtils.closeDialog(mWeiboDialog);
                     keyboardView.setEnabled(true);
                     AlertDialog.Builder builder = new AlertDialog.Builder(VipSearchActivity.this);
                     builder.setMessage(msg.obj.toString());
@@ -81,13 +84,15 @@ public class VipSearchActivity extends AppCompatActivity {
 
                 }
                 if (msg.arg1 == DxSessionHelper.SESSION_ERROR_TOASE) {
-                    waiterBar.setVisibility(View.GONE);
+                   // waiterBar.setVisibility(View.GONE);
+                    WeiboDialogUtils.closeDialog(mWeiboDialog);
                     keyboardView.setEnabled(true);
                     Toast.makeText(VipSearchActivity.this, msg.obj.toString(),
                             Toast.LENGTH_SHORT).show();
                 }
                 if (msg.arg1 == VIP_POST) {
-                    waiterBar.setVisibility(View.GONE);
+                    //waiterBar.setVisibility(View.GONE);
+                    WeiboDialogUtils.closeDialog(mWeiboDialog);
                     keyboardView.setEnabled(true);
                     vipDtlItemAdapter = new VipDtlItemAdapter(custRs, VipSearchActivity.this);
                     vipListView.setAdapter(vipDtlItemAdapter);
@@ -155,7 +160,8 @@ public class VipSearchActivity extends AppCompatActivity {
             }  else if (primaryCode == Keyboard.KEYCODE_CANCEL) { // 清空
                 editable.clear();
             } else if (primaryCode == Keyboard.KEYCODE_DONE) { // 提交
-                waiterBar.setVisibility(View.VISIBLE);
+                //waiterBar.setVisibility(View.VISIBLE);
+
                 keyboardView.setEnabled(false);
                 postVipCust(mSearchHandler,editable.toString());
                 //editable.clear();
@@ -192,6 +198,7 @@ public class VipSearchActivity extends AppCompatActivity {
         }
     };
     private void postVipCust(final Handler handler, final String custCode){
+        mWeiboDialog = WeiboDialogUtils.createLoadingDialog(VipSearchActivity.this, "加载中...");
         new Thread() {
             public void run() {
                 Message msg = null;
