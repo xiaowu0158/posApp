@@ -7,6 +7,61 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     tools:context="com.example.wuhongjie.myapplication.CounterActivity">
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/text_orange"
+        android:id="@+id/titleLinearLayout">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingLeft="20dp"
+            android:gravity="center_vertical"
+            android:text=""
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:id="@+id/counterTitleTextView"/>
+        <android.support.v4.widget.Space
+            android:layout_width="0.0dip"
+            android:layout_height="fill_parent"
+            android:layout_weight="1.0" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@drawable/bg_dark_gray_select"
+            android:text="预付"
+            android:textColor="@color/white"
+            android:textSize="20sp"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@drawable/bg_dark_gray_select"
+            android:text="结账"
+            android:textColor="@color/white"
+            android:textSize="20sp"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@drawable/bg_dark_gray_select"
+            android:text="恢复"
+            android:textColor="@color/white"
+            android:textSize="20sp"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@drawable/bg_dark_gray_select"
+            android:text="挂起"
+            android:textColor="@color/white"
+            android:textSize="20sp"/>
+        <ImageButton
+            android:id="@+id/btn_more"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@drawable/bg_dark_gray_select"
+            android:gravity="center"
+            android:src="@mipmap/icon_wh_more" />
+    </LinearLayout>
 
     <RelativeLayout
         android:layout_width="fill_parent"
@@ -15,7 +70,7 @@
         android:paddingTop="10.0dip"
         android:paddingBottom="10.0dip"
         android:paddingLeft="10.0dip"
-        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true">
         <TableLayout

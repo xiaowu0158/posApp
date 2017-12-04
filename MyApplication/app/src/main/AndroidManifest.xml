@@ -96,15 +96,18 @@
         <activity android:name=".TestActivity" />
         <activity
             android:name=".CounterActivity"
+            android:screenOrientation="landscape"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".ProductSearchActivity"
             android:screenOrientation="landscape" />
-        <activity android:name=".ProductSearchActivity" />
         <activity
             android:name=".HomepageActivity"
             android:screenOrientation="landscape"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".VipSearchActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="landscape" />
         <activity
             android:name=".WarehstkSearchActivity"
             android:theme="@style/AppTheme.NoActionBar" />

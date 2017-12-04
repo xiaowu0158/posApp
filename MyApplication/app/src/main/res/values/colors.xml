@@ -35,5 +35,7 @@
     <color name="text_black">#ff333333</color>
     <color name="edit_graybg">#fff2f2f2</color>
     <color name="line_color">#ffdddddd</color>
+    <color name="bg_gray_off">#ffff5a00</color>
+    <color name="bg_gray_on">#ffeb5503</color>
     <color name="text_orange">#ffff5a00</color>
 </resources>

@@ -16,6 +16,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.InputType;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,6 +25,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -96,12 +98,15 @@ public class CounterActivity extends AppCompatActivity {
     private TextView ttlComDiscValTextView;
     private TextView ttlVipDiscValTextView;
     private TextView ttlSglDiscValTextView;
+    private TextView counterTitleTextView;
+    private PopupMenu popupMenu;
     //private boolean fromCounterPost=false;
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
      * See https://g.co/AppIndexing/AndroidStudio for more information.
      */
     private GoogleApiClient client;
+    private Menu menu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -112,7 +117,9 @@ public class CounterActivity extends AppCompatActivity {
         String deviceId = Settings.Secure.getString(this.getContentResolver(), Settings.Secure.ANDROID_ID);
         String deviceName = Build.MODEL;
         deviceCashId = deviceName.replace(" ", "-").toUpperCase() + "-" + deviceId.toUpperCase();
-        setTitle(deviceId);
+        counterTitleTextView=(TextView) findViewById(R.id.counterTitleTextView);
+        //setTitle(deviceId);
+        counterTitleTextView.setText(deviceId);
         // setTitle("【S00743】萧山市心广场专卖店       【会计日期：2017-10-23】");
         initData();
         initView();
@@ -125,7 +132,7 @@ public class CounterActivity extends AppCompatActivity {
     @Override
     public void onDestroy() {
         super.onDestroy();
-       // rlbDtlListAdapter.unregisterDataSetObserver(sumObserver);
+        // rlbDtlListAdapter.unregisterDataSetObserver(sumObserver);
     }
 
     @Override
@@ -212,9 +219,12 @@ public class CounterActivity extends AppCompatActivity {
                         e.printStackTrace();
                     }
                     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-                    setTitle("【" + shopRs.getRecord(0).getField("SHOP_NUM").getString() + "】" +
+                    counterTitleTextView.setText("【" + shopRs.getRecord(0).getField("SHOP_NUM").getString() + "】" +
                             shopName + "   会计日期：" +
                             sdf.format(fsclDate));
+                    //setTitle("【" + shopRs.getRecord(0).getField("SHOP_NUM").getString() + "】" +
+                    //        shopName + "   会计日期：" +
+                    //        sdf.format(fsclDate));
                     loadAvlTpp(mSearchHandler);
                 }
                 if (msg.arg1 == AVL_TPP_POST) {
@@ -560,8 +570,28 @@ public class CounterActivity extends AppCompatActivity {
         keyboardView.setPreviewEnabled(false);
         keyboardView.setOnKeyboardActionListener(keyListener);
         keyboardView.setVisibility(View.VISIBLE);
-    }
 
+        popupMenu = new PopupMenu(this, findViewById(R.id.btn_more));
+        menu = popupMenu.getMenu();
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.menu_counter, menu);
+        popupMenu.setOnMenuItemClickListener(new PopupMenuItemSelection());
+    }
+    private class PopupMenuItemSelection implements PopupMenu.OnMenuItemClickListener {
+
+        @Override
+        public boolean onMenuItemClick(MenuItem item) {
+            int id = item.getItemId();
+            if (id == R.id.action_avl_tpp) {
+                System.out.println(avlTppRs.recordCount());
+                AvlTppWindow avlTppWindow = new AvlTppWindow(CounterActivity.this, mSearchHandler, policyStructureRs, avlTppRs,
+                        1600, 1000);
+
+                avlTppWindow.showAsDropDown(keyboardView);
+            }
+            return true;
+        }
+    }
     private void prepareData() {
 
     }
