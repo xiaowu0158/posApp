@@ -34,7 +34,7 @@ public class AvlTppWindow implements PopupWindow.OnDismissListener, View.OnClick
         popupWindow=new PopupWindow(view, width, height);
         popupWindow.setOutsideTouchable(false);
         //设置popwindow的动画效果
-        popupWindow.setAnimationStyle(R.style.popWindow_anim_style);
+      //  popupWindow.setAnimationStyle(R.style.popWindow_anim_style);
         popupWindow.setBackgroundDrawable(new ColorDrawable(Color.WHITE));
         popupWindow.setOnDismissListener(this);// 当popWindow消失时的监听
 

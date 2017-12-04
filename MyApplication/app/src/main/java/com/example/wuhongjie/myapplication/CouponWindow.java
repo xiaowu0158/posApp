@@ -68,7 +68,7 @@ public class CouponWindow implements PopupWindow.OnDismissListener, View.OnClick
         });
 
         //设置popwindow的动画效果
-        popupWindow.setAnimationStyle(R.style.popWindow_anim_style);
+        popupWindow.setAnimationStyle(R.style.PopWindowAnimStyle);
         popupWindow.setBackgroundDrawable(new ColorDrawable(Color.WHITE));
         popupWindow.setOnDismissListener(this);// 当popWindow消失时的监听
 
