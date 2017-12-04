@@ -92,7 +92,7 @@
                 android:stackFromBottom="true"
                 android:fillViewport="true"
                 >
-                <!--商品资料  货号（代码，品牌，版型，规格，条码） 单价、 折扣（VIP折扣）、 折后价、数量、金额、删除-->
+                <!--商品资料 货号（代码，品牌，版型，规格，条码） 单价、 折扣（VIP折扣）、 折后价、数量、金额、删除-->
                 <!--标题-->
                 <LinearLayout
                     android:layout_width="match_parent"
