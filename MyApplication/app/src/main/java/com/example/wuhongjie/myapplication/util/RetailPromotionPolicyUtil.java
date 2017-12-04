@@ -10,7 +10,7 @@ public class RetailPromotionPolicyUtil{
   public static int MAX_VALUE_LENGTH = 20;
   public static RecordSet policyRs;
   public RetailPromotionPolicyUtil(RecordSet policyRs) {
-   this.policyRs= policyRs;
+   RetailPromotionPolicyUtil.policyRs = policyRs;
   }
   
   public static String describePolicy(String paramString, Record paramReadRow, int paramInt) throws UnsupportedEncodingException {
@@ -20,7 +20,9 @@ public class RetailPromotionPolicyUtil{
 
     String str2 = paramReadRow.getField("PROD_CODE_DESC").getString();
     int i = paramReadRow.getField("PROD_CLS_QTY").getNumber().intValue();
-    String str3 = new String(paramReadRow.getField("EX_PROD_CODE").getBytes(),"GBK");
+    String str3="";
+    if(!paramReadRow.getField("EX_PROD_CODE").isNull())
+        str3 = new String(paramReadRow.getField("EX_PROD_CODE").getBytes(),"GBK");
     //String str4 = paramReadRow.getField("EX_PROD_CODE_DESC").getString()==null?"":new String(paramReadRow.getField("EX_PROD_CODE_DESC").getBytes(),"GBK");
     String str4 = paramReadRow.getField("EX_PROD_CODE_DESC").getString();
     double d1 = paramReadRow.getField("DR_LM").getNumber().doubleValue();
@@ -42,16 +44,16 @@ public class RetailPromotionPolicyUtil{
     double d9 = paramReadRow.getField("BD_PRC").getNumber().doubleValue();
     String str9;
     if (str1.length() == 0) {
-      str9 = MessageFormat.format("商品”{0}”", new Object[] { "全部" });
+      str9 = MessageFormat.format("商品”{0}”", "全部");
     } else {
       str1=(paramInt > 3) && (str1.length() > paramInt) ? str1.substring(0, paramInt - 3) + "...":str1;
-      str9 = MessageFormat.format("商品”{0}”", new Object[] { (str2 == null) || (str2.length() == 0) ? str1 : str2 });
+      str9 = MessageFormat.format("商品”{0}”", (str2 == null) || (str2.length() == 0) ? str1 : str2);
     }
     String str10;
     if (str3.length() == 0) {
       str10 = "";
     } else {
-      str10 = MessageFormat.format("除“{0}”外", new Object[] { (str4 == null) || (str4.length() == 0) ? str3 : (paramInt > 3) && (str3.length() > paramInt) ? str3.substring(0, paramInt - 3) + "..." : str4 });
+      str10 = MessageFormat.format("除“{0}”外", (str4 == null) || (str4.length() == 0) ? str3 : (paramInt > 3) && (str3.length() > paramInt) ? str3.substring(0, paramInt - 3) + "..." : str4);
     }
     String str11;
     if (str6.length() == 0) {
@@ -63,7 +65,7 @@ public class RetailPromotionPolicyUtil{
     if (d1 == 0.0D) {
       str12 = "";
     } else {
-      str12 = MessageFormat.format("折率不小于{0}时", new Object[] { Double.valueOf(d1) });
+      str12 = MessageFormat.format("折率不小于{0}时", Double.valueOf(d1));
     }
     String str13;
     if (i == 0) {
@@ -71,13 +73,13 @@ public class RetailPromotionPolicyUtil{
     } else if (i == 1) {
       str13 = "单款";
     } else {
-      str13 = MessageFormat.format("组合{0}款", new Object[] { Integer.valueOf(i) });
+      str13 = MessageFormat.format("组合{0}款", Integer.valueOf(i));
     }
     String str14;
     if (d2 > 0.0D) {
-      str14 = MessageFormat.format("{0}件", new Object[] { Double.valueOf(d2) });
+      str14 = MessageFormat.format("{0}件", Double.valueOf(d2));
     } else if (d3 > 0.0D) {
-      str14 = MessageFormat.format("{0}元", new Object[] { Double.valueOf(d3) });
+      str14 = MessageFormat.format("{0}元", Double.valueOf(d3));
     } else {
       str14 ="“无限制”";
     }
@@ -92,49 +94,49 @@ public class RetailPromotionPolicyUtil{
       str15 = "";
     }
     if (paramString.equals("SR1")) {
-      str16 = MessageFormat.format("{0}{1}{2}{3}满{4}折率{5}。", new Object[] { str9, str10, str12, str13, str14, Double.valueOf(d5) });
+      str16 = MessageFormat.format("{0}{1}{2}{3}满{4}折率{5}。", str9, str10, str12, str13, str14, Double.valueOf(d5));
     } else if (paramString.equals("SR2")) {
-      str16 = MessageFormat.format(!str5.equals("A") ? "{0}{1}{2}{3}满{4}减收{5}元。" : "{0}{1}{2}{3}满{4}加赠{5}元。", new Object[] { str9, str10, str12, str13, str14, Double.valueOf(d7) });
+      str16 = MessageFormat.format(!str5.equals("A") ? "{0}{1}{2}{3}满{4}减收{5}元。" : "{0}{1}{2}{3}满{4}加赠{5}元。", str9, str10, str12, str13, str14, Double.valueOf(d7));
     } else if (paramString.equals("SR3")) {
-      str16 = MessageFormat.format("{0}{1}{2}{3}满{4}加{5}元送赠品“{6}”{7}件。", new Object[] { str9, str10, str12, str13, str14, Double.valueOf(d4), str11, Double.valueOf(d6) });
+      str16 = MessageFormat.format("{0}{1}{2}{3}满{4}加{5}元送赠品“{6}”{7}件。", str9, str10, str12, str13, str14, Double.valueOf(d4), str11, Double.valueOf(d6));
     } else if (paramString.equals("SR4")) {
-      str16 = MessageFormat.format("{0}{1}{2}{3}满{4}加{5}元送价格{6}{7}元赠品{8}{9}件。", new Object[] { str9, str10, str12, str13, str14, Double.valueOf(d4), str15, Double.valueOf(d8), str11, Double.valueOf(d6) });
+      str16 = MessageFormat.format("{0}{1}{2}{3}满{4}加{5}元送价格{6}{7}元赠品{8}{9}件。", str9, str10, str12, str13, str14, Double.valueOf(d4), str15, Double.valueOf(d8), str11, Double.valueOf(d6));
     } else if (paramString.equals("SR5")) {
-      str16 = MessageFormat.format("{0}{1}{2}{3}满{4}打{5}折送赠品“{6}”{7}件。", new Object[] { str9, str10, str12, str13, str14, Double.valueOf(d5), str11, Double.valueOf(d6) });
+      str16 = MessageFormat.format("{0}{1}{2}{3}满{4}打{5}折送赠品“{6}”{7}件。", str9, str10, str12, str13, str14, Double.valueOf(d5), str11, Double.valueOf(d6));
     } else if (paramString.equals("SP1")) {
-      str16 = MessageFormat.format(!str5.equals("A") ? "{0}{1}{2}{3}每{4}减收{5}元。" : "{0}{1}{2}{3}每{4}加赠{5}元。", new Object[] { str9, str10, str12, str13, str14, Double.valueOf(d7) });
+      str16 = MessageFormat.format(!str5.equals("A") ? "{0}{1}{2}{3}每{4}减收{5}元。" : "{0}{1}{2}{3}每{4}加赠{5}元。", str9, str10, str12, str13, str14, Double.valueOf(d7));
     } else if (paramString.equals("SP2")) {
-      str16 = MessageFormat.format("{0}{1}{2}{3}每{4}加{5}元送{6}件。", new Object[] { str9, str10, str12, str13, str14, Double.valueOf(d4), Double.valueOf(d6) });
+      str16 = MessageFormat.format("{0}{1}{2}{3}每{4}加{5}元送{6}件。", str9, str10, str12, str13, str14, Double.valueOf(d4), Double.valueOf(d6));
     } else if (paramString.equals("SP3")) {
-      str16 = MessageFormat.format("{0}{1}{2}{3}每{4}加{5}元送赠品“{6}”{7}件。", new Object[] { str9, str10, str12, str13, str14, Double.valueOf(d4), str11, Double.valueOf(d6) });
+      str16 = MessageFormat.format("{0}{1}{2}{3}每{4}加{5}元送赠品“{6}”{7}件。", str9, str10, str12, str13, str14, Double.valueOf(d4), str11, Double.valueOf(d6));
     } else if (paramString.equals("SP4")) {
-      str16 = MessageFormat.format("{0}{1}{2}{3}每{4}加{5}元送价格{6}{7}元赠品{8}{9}件。", new Object[] { str9, str10, str12, str13, str14, Double.valueOf(d4), str15, Double.valueOf(d8), str11, Double.valueOf(d6) });
+      str16 = MessageFormat.format("{0}{1}{2}{3}每{4}加{5}元送价格{6}{7}元赠品{8}{9}件。", str9, str10, str12, str13, str14, Double.valueOf(d4), str15, Double.valueOf(d8), str11, Double.valueOf(d6));
     } else if (paramString.equals("SP5")) {
-      str16 = MessageFormat.format("{0}{1}{2}{3}每{4}共售{5}元。", new Object[] { str9, str10, str12, str13, str14, Double.valueOf(d9) });
+      str16 = MessageFormat.format("{0}{1}{2}{3}每{4}共售{5}元。", str9, str10, str12, str13, str14, Double.valueOf(d9));
     } else if (paramString.equals("SP6")) {
-      str16 = MessageFormat.format("{0}{1}{2}{3}每{4}加{5}元送价格{6}原价格赠品{7}{8}件。", new Object[] { str9, str10, str12, str13, str14, Double.valueOf(d4), str15, str11, Double.valueOf(d6) });
+      str16 = MessageFormat.format("{0}{1}{2}{3}每{4}加{5}元送价格{6}原价格赠品{7}{8}件。", str9, str10, str12, str13, str14, Double.valueOf(d4), str15, str11, Double.valueOf(d6));
     } else if (paramString.equals("SP7")) {
-      str16 = MessageFormat.format("{0}{1}{2}{3}每{4}加{5}元送价格{6}原金额赠品{7}{8}件。", new Object[] { str9, str10, str12, str13, str14, Double.valueOf(d4), str15, str11, Double.valueOf(d6) });
+      str16 = MessageFormat.format("{0}{1}{2}{3}每{4}加{5}元送价格{6}原金额赠品{7}{8}件。", str9, str10, str12, str13, str14, Double.valueOf(d4), str15, str11, Double.valueOf(d6));
     } else if (paramString.equals("SP8")) {
-      str16 = MessageFormat.format("{0}{1}{2}{3}每{4}打{5}折送赠品“{6}”{7}件。", new Object[] { str9, str10, str12, str13, str14, Double.valueOf(d5), str11, Double.valueOf(d6) });
+      str16 = MessageFormat.format("{0}{1}{2}{3}每{4}打{5}折送赠品“{6}”{7}件。", str9, str10, str12, str13, str14, Double.valueOf(d5), str11, Double.valueOf(d6));
     } else if (paramString.equals("WR1")) {
-      str16 = MessageFormat.format("整单对{0}{1}{2}满{3}折率{4}。", new Object[] { str9, str10, str12, str14, Double.valueOf(d5) });
+      str16 = MessageFormat.format("整单对{0}{1}{2}满{3}折率{4}。", str9, str10, str12, str14, Double.valueOf(d5));
     } else if (paramString.equals("WR2")) {
-      str16 = MessageFormat.format(!str5.equals("A") ? "整单对{0}{1}{2}满{3}减收{4}元。" : "整单对{0}{1}{2}满{3}加赠{4}元。", new Object[] { str9, str10, str12, str14, Double.valueOf(d7) });
+      str16 = MessageFormat.format(!str5.equals("A") ? "整单对{0}{1}{2}满{3}减收{4}元。" : "整单对{0}{1}{2}满{3}加赠{4}元。", str9, str10, str12, str14, Double.valueOf(d7));
     } else if (paramString.equals("WR3")) {
-      str16 = MessageFormat.format("整单对{0}{1}{2}满{3}加{4}元送赠品“{5}”{6}件。", new Object[] { str9, str10, str12, str14, Double.valueOf(d4), str11, Double.valueOf(d6) });
+      str16 = MessageFormat.format("整单对{0}{1}{2}满{3}加{4}元送赠品“{5}”{6}件。", str9, str10, str12, str14, Double.valueOf(d4), str11, Double.valueOf(d6));
     } else if (paramString.equals("WR4")) {
-      str16 = MessageFormat.format("整单对{0}{1}{2}满{3}加{4}元送价格{5}{6}元赠品{7}{8}件。", new Object[] { str9, str10, str12, str14, Double.valueOf(d4), str15, Double.valueOf(d8), str11, Double.valueOf(d6) });
+      str16 = MessageFormat.format("整单对{0}{1}{2}满{3}加{4}元送价格{5}{6}元赠品{7}{8}件。", str9, str10, str12, str14, Double.valueOf(d4), str15, Double.valueOf(d8), str11, Double.valueOf(d6));
     } else if (paramString.equals("WR5")) {
-      str16 = MessageFormat.format("整单对{0}{1}{2}满{3}打{4}折送赠品“{5}”{6}件。", new Object[] { str9, str10, str12, str14, Double.valueOf(d5), str11, Double.valueOf(d6) });
+      str16 = MessageFormat.format("整单对{0}{1}{2}满{3}打{4}折送赠品“{5}”{6}件。", str9, str10, str12, str14, Double.valueOf(d5), str11, Double.valueOf(d6));
     } else if (paramString.equals("WP1")) {
-      str16 = MessageFormat.format(!str5.equals("A") ? "整单对{0}{1}{2}每{3}减收{4}元。" : "整单对{0}{1}{2}每{3}加赠{4}元。", new Object[] { str9, str10, str12, str14, Double.valueOf(d7) });
+      str16 = MessageFormat.format(!str5.equals("A") ? "整单对{0}{1}{2}每{3}减收{4}元。" : "整单对{0}{1}{2}每{3}加赠{4}元。", str9, str10, str12, str14, Double.valueOf(d7));
     } else if (paramString.equals("WP3")) {
-      str16 = MessageFormat.format("整单对{0}{1}{2}每{3}加{4}元送商品“{5}”{6}件。", new Object[] { str9, str10, str12, str14, Double.valueOf(d4), str11, Double.valueOf(d6) });
+      str16 = MessageFormat.format("整单对{0}{1}{2}每{3}加{4}元送商品“{5}”{6}件。", str9, str10, str12, str14, Double.valueOf(d4), str11, Double.valueOf(d6));
     } else if (paramString.equals("WP4")) {
-      str16 = MessageFormat.format("整单对{0}{1}{2}每{3}加{4}元送价格{5}{6}元赠品{7}{8}件。", new Object[] { str9, str10, str12, str14, Double.valueOf(d4), str15, Double.valueOf(d8), str11, Double.valueOf(d6) });
+      str16 = MessageFormat.format("整单对{0}{1}{2}每{3}加{4}元送价格{5}{6}元赠品{7}{8}件。", str9, str10, str12, str14, Double.valueOf(d4), str15, Double.valueOf(d8), str11, Double.valueOf(d6));
     } else if (paramString.equals("WP5")) {
-      str16 = MessageFormat.format("整单对{0}{1}{2}每{3}打{4}折送赠品“{5}”{6}件。", new Object[] { str9, str10, str12, str14, Double.valueOf(d5), str11, Double.valueOf(d6) });
+      str16 = MessageFormat.format("整单对{0}{1}{2}每{3}打{4}折送赠品“{5}”{6}件。", str9, str10, str12, str14, Double.valueOf(d5), str11, Double.valueOf(d6));
     }
     return str16;
   }
@@ -199,10 +201,10 @@ public class RetailPromotionPolicyUtil{
       e.printStackTrace();
     }
     if ((paramString.equals("SR3")) || (paramString.equals("SR4")) || (paramString.equals("SR5")) || (paramString.equals("SP2")) || (paramString.equals("SP3")) || (paramString.equals("SP4")) || (paramString.equals("SP6")) || (paramString.equals("SP7")) || (paramString.equals("SP8")) || (paramString.equals("WR3")) || (paramString.equals("WR4")) || (paramString.equals("WR5")) || (paramString.equals("WP3")) || (paramString.equals("WP4")) || (paramString.equals("WP5"))) {
-      str = str + MessageFormat.format("共可赠送{0}件，已赠送{1}件。", new Object[] { Double.valueOf(paramReadRow.getField("MAX_PS_QTY").getNumber().doubleValue()),
-              Double.valueOf(paramReadRow.getField("CUR_PS_QTY").getNumber().doubleValue()) });
+      str = str + MessageFormat.format("共可赠送{0}件，已赠送{1}件。", Double.valueOf(paramReadRow.getField("MAX_PS_QTY").getNumber().doubleValue()),
+              Double.valueOf(paramReadRow.getField("CUR_PS_QTY").getNumber().doubleValue()));
     } else if ((paramString.equals("SR2")) || (paramString.equals("SP1")) || (paramString.equals("WR2")) || (paramString.equals("WP1"))) {
-      str = str + MessageFormat.format("已赠送{0}元。", new Object[] { Double.valueOf(paramReadRow.getField("CUR_PS_VAL").getNumber().doubleValue()) });
+      str = str + MessageFormat.format("已赠送{0}元。", Double.valueOf(paramReadRow.getField("CUR_PS_VAL").getNumber().doubleValue()));
     }
     return str;
   }

@@ -1,6 +1,7 @@
 package com.example.wuhongjie.myapplication;
 
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.inputmethodservice.Keyboard;
@@ -31,6 +32,7 @@ import com.example.wuhongjie.myapplication.adapter.WarehStkItemAdapter;
 import com.youngor.modules.drp.counter.intf.RlbWeb;
 
 public class WarehstkSearchActivity extends AppCompatActivity {
+    private Dialog mWeiboDialog;
     private Handler mSearchHandler;
     private ClientSession session = null;
     private static int WAREH_STK_POST = 2902;
@@ -57,7 +59,8 @@ public class WarehstkSearchActivity extends AppCompatActivity {
         mSearchHandler = new Handler() {
             public void handleMessage(Message msg) {
                 if (msg.arg1 == DxSessionHelper.SESSION_ERROR) {
-                    waiterBar.setVisibility(View.GONE);
+                    //waiterBar.setVisibility(View.GONE);
+                    WeiboDialogUtils.closeDialog(mWeiboDialog);
                     keyboardView.setEnabled(true);
                     AlertDialog.Builder builder = new AlertDialog.Builder(WarehstkSearchActivity.this);
                     builder.setMessage(msg.obj.toString());
@@ -72,13 +75,15 @@ public class WarehstkSearchActivity extends AppCompatActivity {
 
                 }
                 if (msg.arg1 == DxSessionHelper.SESSION_ERROR_TOASE) {
-                    waiterBar.setVisibility(View.GONE);
+                   // waiterBar.setVisibility(View.GONE);
+                    WeiboDialogUtils.closeDialog(mWeiboDialog);
                     keyboardView.setEnabled(true);
                     Toast.makeText(WarehstkSearchActivity.this, msg.obj.toString(),
                             Toast.LENGTH_SHORT).show();
                 }
                 if (msg.arg1 == WAREH_STK_POST) {
-                    waiterBar.setVisibility(View.GONE);
+                    //waiterBar.setVisibility(View.GONE);
+                    WeiboDialogUtils.closeDialog(mWeiboDialog);
                     keyboardView.setEnabled(true);
                     warehStkItemAdapter = new WarehStkItemAdapter(warehStkRs, WarehstkSearchActivity.this);
                     warehStkListView.setAdapter(warehStkItemAdapter);
@@ -143,7 +148,8 @@ public class WarehstkSearchActivity extends AppCompatActivity {
             }  else if (primaryCode == Keyboard.KEYCODE_CANCEL) { // 清空
                 editable.clear();
             } else if (primaryCode == Keyboard.KEYCODE_DONE) { // 提交
-                waiterBar.setVisibility(View.VISIBLE);
+                //waiterBar.setVisibility(View.VISIBLE);
+                mWeiboDialog = WeiboDialogUtils.createLoadingDialog(WarehstkSearchActivity.this, "加载中...");
                 keyboardView.setEnabled(false);
                 postWarehStkProd(mSearchHandler,editable.toString());
                 //editable.clear();
