@@ -10,7 +10,7 @@
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:background="@color/text_orange"
+        android:background="@color/bg_orange"
         android:id="@+id/titleLinearLayout">
 
         <TextView
@@ -67,7 +67,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/login_user_table_bg"
-        android:paddingTop="10.0dip"
+        android:layout_below="@+id/titleLinearLayout"
         android:paddingBottom="10.0dip"
         android:paddingLeft="10.0dip"
         android:layout_alignParentBottom="true"
@@ -78,8 +78,6 @@
             android:id="@+id/main_table"
             android:layout_width="600dp"
             android:layout_height="fill_parent"
-            android:layout_marginRight="10.0dip"
-
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true">
             <ScrollView
@@ -573,7 +571,7 @@
             android:id="@+id/function_table"
             android:orientation="vertical"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="fill_parent"
             android:layout_toRightOf="@+id/main_table"
             android:layout_marginRight="10.0dip"
             android:stretchColumns="0,2">
@@ -870,29 +868,58 @@
                      android:text="结算"
                      />
              </LinearLayout> -->
+
             <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15.0dip">
-                <Button
-                    android:id="@+id/login_btn_logout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="5.0dip"
+
+                android:orientation="vertical">
+               <LinearLayout
+                   android:layout_width="match_parent"
+                   android:layout_height="0dp"
+                   android:layout_weight="1"
+                   android:layout_marginBottom="5dp"
+                   >
+               </LinearLayout>
+                <LinearLayout
                     android:layout_width="fill_parent"
-                    android:layout_height="40dip"
-                    android:textSize="20dp"
-                    android:text="挂  起"
-                    android:background="@drawable/login_btn_selector" />
+                    android:layout_height="75dp"
+                    android:background="@drawable/widget_head_bg"
+                    android:layout_marginTop="5dp">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <Button
+                            android:id="@+id/btn_submit"
+                            android:layout_width="140dp"
+                            android:layout_height="60dp"
+                            android:layout_marginLeft="8dp"
+                            android:layout_centerVertical="true"
+                            android:layout_alignParentLeft="true"
+                            android:background="@color/bg_orange"
+                            android:text="货位选择"
+                            android:textColor="@color/white"
+                            android:textSize="24.0sp"
+                            android:layout_marginStart="8dp" />
+
+                        <Button
+                            android:id="@+id/btn_cancel"
+                            android:layout_width="140dp"
+                            android:layout_height="60dp"
+                            android:layout_marginLeft="8dp"
+                            android:layout_centerVertical="true"
+                            android:layout_toRightOf="@+id/btn_submit"
+                            android:text="营业员选择"
+                            android:textColor="@color/white"
+                            android:background="@color/bg_orange"
+                            android:textSize="24.0sp"
+                            />
+                    </RelativeLayout>
+                </LinearLayout>
             </LinearLayout>
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5.0dip">
-                <Button
-                    android:layout_width="fill_parent"
-                    android:layout_height="40dip"
-                    android:textSize="20dp"
-                    android:text="退  还"
-                    android:background="@drawable/login_btn_selector" />
-            </LinearLayout>
+
         </TableLayout>
 
     </RelativeLayout>

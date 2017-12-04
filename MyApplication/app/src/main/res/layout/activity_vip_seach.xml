@@ -261,6 +261,7 @@
                 android:layout_marginRight="8dp"
                 android:layout_centerVertical="true"
                 android:layout_alignParentRight="true"
+                android:background="@color/bg_orange"
                 android:text="确定"
                 android:textColor="@color/white"
                 android:textSize="24.0sp"
