@@ -33,7 +33,7 @@ public class Agency{
 		ArrayList<String> agtList = new ArrayList<String>();
 		agtList.add("WEB");
 		try{
-			agentPoolMap.put("WEB", new AgentPool("WEB",null,"172.16.199.65","WEB@127-0-0-1"));
+			agentPoolMap.put("WEB", new AgentPool("WEB",null,"172.16.3.21","WEB@127-0-0-1"));
 		}catch (Throwable localThrowable){
 			System.out.println("Failed to launch agent: WEB" );
 		}
@@ -44,7 +44,7 @@ public class Agency{
   }
   
   public static void clear(String paramString){
-	  AgentPool agentPool = (AgentPool)agentPoolMap.get(paramString);
+	  AgentPool agentPool = agentPoolMap.get(paramString);
 	  if (agentPool != null) {
 		  synchronized (agentPool){
 			  agentPool.clear();
@@ -56,7 +56,7 @@ public class Agency{
     synchronized (agentPoolMap){
     	Iterator<String> localIterator = agentPoolMap.keySet().iterator();
     	while (localIterator.hasNext()){
-    		String str = (String)localIterator.next();
+    		String str = localIterator.next();
     		clear(str);
     	}
     }
@@ -67,12 +67,12 @@ public class Agency{
   }
   
   public static AgentPool getPool(String paramString){
-    return (AgentPool)agentPoolMap.get(paramString);
+    return agentPoolMap.get(paramString);
   }
   
   public static ClientSession getSession(String agtName, HashMap<String, Object> params, 
 		  VariantHolder<HashMap<String, Object>> receipt)throws Exception{
-	  AgentPool agentPool = (AgentPool)agentPoolMap.get(agtName);
+	  AgentPool agentPool = agentPoolMap.get(agtName);
 	  if (agentPool == null) {
 		  throw new Exception(MessageFormat.format(res.getString("MSG_UNKNOWN_OR_INVALID_AGENT"), 
 				  new Object[] { agtName }));
