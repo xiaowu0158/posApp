@@ -32,6 +32,7 @@ public class SellerWindow implements PopupWindow.OnDismissListener, View.OnClick
         this.handler=handler;
         this.sellerRs=sellerRs;
         View view= LayoutInflater.from(context).inflate(R.layout.window_seller, null);
+        System.out.println("营业员列表："+sellerRs.recordCount());
         sellerGridView=(GridView)view.findViewById(R.id.sellerListView);
         sellerItemAdapter = new SellerItemAdapter(this.sellerRs, this.context);
         sellerGridView.setAdapter(sellerItemAdapter);

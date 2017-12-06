@@ -6,8 +6,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:orientation="horizontal" >
+        android:orientation="horizontal"
+        android:background="@color/bg_orange">
 
         <TextView
             android:id="@+id/title"
@@ -17,6 +17,7 @@
             android:layout_weight="1"
             android:layout_marginLeft="10dp"
             android:text="请选择营业员："
+            android:textColor="@color/white"
             android:textSize="18sp" />
         <ImageView
             android:id="@+id/team_popupdel"
@@ -36,11 +37,11 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/sellerListView"
+            android:horizontalSpacing="10dp"
+            android:verticalSpacing="10dp"
             android:layout_marginBottom="80dp"
-            android:paddingBottom="80dp"
+            android:padding="5dp"
             android:numColumns="5">
-
-
         </GridView>
         <LinearLayout
             android:layout_width="fill_parent"

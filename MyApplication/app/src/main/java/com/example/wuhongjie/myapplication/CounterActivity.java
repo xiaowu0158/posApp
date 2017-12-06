@@ -322,11 +322,12 @@ public class CounterActivity extends AppCompatActivity {
                     shopId = ((RecordSet) data.value).getRecord(0).getField("SHOP_ID").getNumber();
                     shopRs = (RecordSet) data.value;
                     data = new VariantHolder();
-                    data.value = new TransientRecordSet[]{new TransientRecordSet(),new TransientRecordSet()};
+                    data.value = new RecordSet[]{new RecordSet(),new RecordSet()};
                     if(!rlbWeb.getShopSellerWarehLoc(shopId,data,errMsg)){
                         throw new Exception(errMsg.value);
                     }
                     sellerRs=((RecordSet[])data.value)[0];
+                    System.out.println(sellerRs.recordCount());
                     locationRs=((RecordSet[])data.value)[1];
                     msg = new Message();
                     msg.arg1 = COUNT_INIT;
@@ -671,6 +672,7 @@ public class CounterActivity extends AppCompatActivity {
     private class SellerSelectButtonClick implements View.OnClickListener {
         @Override
         public void onClick(View view) {
+            System.out.println("营业员列表："+sellerRs.recordCount());
             SellerWindow sellerWindow = new SellerWindow(CounterActivity.this, mSearchHandler,sellerRs,
                     1000, 900);
             sellerWindow.showAsDropDown(btn_selectSeller);

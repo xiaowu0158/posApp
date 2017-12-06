@@ -64,7 +64,9 @@ public class SellerItemAdapter extends BaseAdapter{
         }
         String locName="";
         try{
-            locName=new String(list.getRecord(i).getField("SELLER_NAME").getBytes(),"GBK");
+            //System.out.println(i);
+            //locName=list.getRecord(i).getField("EMPL_NAME").getString();
+            locName=new String(list.getRecord(i).getField("EMPL_NAME").getBytes(),"GBK");
         }catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
