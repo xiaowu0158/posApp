@@ -892,7 +892,7 @@
                         android:layout_height="match_parent">
 
                         <Button
-                            android:id="@+id/btn_submit"
+                            android:id="@+id/btn_selectLocation"
                             android:layout_width="140dp"
                             android:layout_height="60dp"
                             android:layout_marginLeft="8dp"
@@ -905,7 +905,7 @@
                             android:layout_marginStart="8dp" />
 
                         <Button
-                            android:id="@+id/btn_cancel"
+                            android:id="@+id/btn_selectSeller"
                             android:layout_width="140dp"
                             android:layout_height="60dp"
                             android:layout_marginLeft="8dp"

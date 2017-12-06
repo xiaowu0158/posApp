@@ -7,27 +7,31 @@ import com.evangelsoft.econnect.session.RemoteException;
 
 public interface RlbWeb {
 	@TxMode(TxUnit.TX_NONE)
-	public boolean getProduct(Object key, VariantHolder<Object> data,
-							  VariantHolder<String> errMsg) throws RemoteException;
+	boolean getProduct(Object key, VariantHolder<Object> data,
+					   VariantHolder<String> errMsg) throws RemoteException;
 	@TxMode(TxUnit.TX_NONE)
-	public boolean getVipCust(Object key, VariantHolder<Object> data,
-							  VariantHolder<String> errMsg) throws RemoteException;
+	boolean getVipCust(Object key, VariantHolder<Object> data,
+					   VariantHolder<String> errMsg) throws RemoteException;
 	@TxMode(TxUnit.TX_NONE)
-	public boolean getWarehStk(Object key, VariantHolder<Object> data,
+	boolean getWarehStk(Object key, VariantHolder<Object> data,
+						VariantHolder<String> errMsg) throws RemoteException;
+	@TxMode(TxUnit.TX_NONE)
+	boolean getPolicy(Object key, VariantHolder<Object> data,
+					  VariantHolder<String> errMsg) throws RemoteException;
+	@TxMode(TxUnit.TX_NONE)
+	boolean getPolicyStructure(VariantHolder<Object> data,
 							   VariantHolder<String> errMsg) throws RemoteException;
 	@TxMode(TxUnit.TX_NONE)
-	public boolean getPolicy(Object key, VariantHolder<Object> data,
-							 VariantHolder<String> errMsg) throws RemoteException;
+	boolean executePolicy(Object key, VariantHolder<Object> data,
+						  VariantHolder<String> errMsg) throws RemoteException;
 	@TxMode(TxUnit.TX_NONE)
-	public boolean getPolicyStructure(VariantHolder<Object> data,
-									  VariantHolder<String> errMsg) throws RemoteException;
-	@TxMode(TxUnit.TX_NONE)
-	public boolean executePolicy(Object key,VariantHolder<Object> data,
+	boolean executePolicyForCust(Object key, VariantHolder<Object> data,
 								 VariantHolder<String> errMsg) throws RemoteException;
 	@TxMode(TxUnit.TX_NONE)
-	public boolean executePolicyForCust(Object key,VariantHolder<Object> data,
-										VariantHolder<String> errMsg) throws RemoteException;
+	boolean getRlbStructure(VariantHolder<Object> data,
+							VariantHolder<String> errMsg)throws RemoteException;
+
 	@TxMode(TxUnit.TX_NONE)
-	public boolean getRlbStructure(VariantHolder<Object> data,
-								   VariantHolder<String> errMsg)throws RemoteException;
+	boolean getShopSellerWarehLoc(Object key, VariantHolder<Object> data,
+								  VariantHolder<String> errMsg)throws RemoteException;
 }

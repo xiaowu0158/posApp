@@ -75,6 +75,8 @@ public class CounterActivity extends AppCompatActivity {
     private RecordSet avlTppRs = new RecordSet();
     private RecordSet tppRs = new RecordSet();
     private RecordSet policyStructureRs = new RecordSet();
+    private RecordSet locationRs=new RecordSet();
+    private RecordSet sellerRs=new RecordSet();
     private Record vipRc;
     private Record productRc;
     private KeyboardView keyboardView;
@@ -100,14 +102,11 @@ public class CounterActivity extends AppCompatActivity {
     private TextView ttlSglDiscValTextView;
     private TextView counterTitleTextView;
     private PopupMenu popupMenu;
-    //private boolean fromCounterPost=false;
-    /**
-     * ATTENTION: This was auto-generated to implement the App Indexing API.
-     * See https://g.co/AppIndexing/AndroidStudio for more information.
-     */
     private GoogleApiClient client;
     private Menu menu;
-
+    private Button btn_selectLocation;
+    private Button btn_selectSeller;
+    private boolean locAdopted=false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -187,6 +186,7 @@ public class CounterActivity extends AppCompatActivity {
 
 
             }
+
         }
     }
 
@@ -225,6 +225,18 @@ public class CounterActivity extends AppCompatActivity {
                     //setTitle("【" + shopRs.getRecord(0).getField("SHOP_NUM").getString() + "】" +
                     //        shopName + "   会计日期：" +
                     //        sdf.format(fsclDate));
+                    locAdopted=true;
+                    if(locationRs.recordCount()<=0){
+                        locAdopted=false;
+                    }else{
+                        if(!locationRs.getRecord(0).getField("LOC_ADOPTED").getString().equals("T")){
+                            locAdopted=false;
+                        }
+                    }
+                    if(!locAdopted){
+                        btn_selectLocation.setVisibility(View.GONE);
+                    }
+
                     loadAvlTpp(mSearchHandler);
                 }
                 if (msg.arg1 == AVL_TPP_POST) {
@@ -299,6 +311,8 @@ public class CounterActivity extends AppCompatActivity {
                     }
                     CashRegister cashRegister = (CashRegister) new RMIProxy(session)
                             .newStub(CashRegister.class);
+                    RlbWeb rlbWeb = (RlbWeb) new RMIProxy(session)
+                            .newStub(RlbWeb.class);
                     VariantHolder data = new VariantHolder();
                     VariantHolder<String> errMsg = new VariantHolder<String>();
                     data.value = new TransientRecordSet();
@@ -307,6 +321,13 @@ public class CounterActivity extends AppCompatActivity {
                     }
                     shopId = ((RecordSet) data.value).getRecord(0).getField("SHOP_ID").getNumber();
                     shopRs = (RecordSet) data.value;
+                    data = new VariantHolder();
+                    data.value = new TransientRecordSet[]{new TransientRecordSet(),new TransientRecordSet()};
+                    if(!rlbWeb.getShopSellerWarehLoc(shopId,data,errMsg)){
+                        throw new Exception(errMsg.value);
+                    }
+                    sellerRs=((RecordSet[])data.value)[0];
+                    locationRs=((RecordSet[])data.value)[1];
                     msg = new Message();
                     msg.arg1 = COUNT_INIT;
                     handler.sendMessage(msg);
@@ -553,6 +574,11 @@ public class CounterActivity extends AppCompatActivity {
         policyTextView = (TextView) findViewById(R.id.policyTextView);
         search_btn = (Button) findViewById(R.id.search_btn);
         search_btn.setOnClickListener(new ProdCodeSearchButtonClick());
+        btn_selectLocation=(Button)findViewById(R.id.btn_selectLocation);
+        btn_selectLocation.setOnClickListener(new LocationSelectButtonClick());
+
+        btn_selectSeller=(Button)findViewById(R.id.btn_selectSeller);
+        btn_selectSeller.setOnClickListener(new SellerSelectButtonClick());
         custNameTextView = (TextView) findViewById(R.id.custNameTextView);
         custBirthdayTextView = (TextView) findViewById(R.id.custBirthdayTextView);
         custPntValTextView = (TextView) findViewById(R.id.custPntValTextView);
@@ -642,7 +668,23 @@ public class CounterActivity extends AppCompatActivity {
             startActivityForResult(intent, REQUEST_WAREH_STK);
         }
     }
-
+    private class SellerSelectButtonClick implements View.OnClickListener {
+        @Override
+        public void onClick(View view) {
+            SellerWindow sellerWindow = new SellerWindow(CounterActivity.this, mSearchHandler,sellerRs,
+                    1000, 900);
+            sellerWindow.showAsDropDown(btn_selectSeller);
+        }
+    }
+    private class LocationSelectButtonClick implements View.OnClickListener {
+        @Override
+        public void onClick(View view) {
+            Intent intent = new Intent();
+            intent.setClass(CounterActivity.this, WarehstkSearchActivity.class);
+            intent.putExtra("shop", shopRs);
+            startActivityForResult(intent, REQUEST_WAREH_STK);
+        }
+    }
     private KeyboardView.OnKeyboardActionListener keyListener = new KeyboardView.OnKeyboardActionListener() {
         @Override
         public void onPress(int i) {
