@@ -910,7 +910,7 @@
                             android:layout_height="60dp"
                             android:layout_marginLeft="8dp"
                             android:layout_centerVertical="true"
-                            android:layout_toRightOf="@+id/btn_submit"
+                            android:layout_toRightOf="@+id/btn_selectLocation"
                             android:text="营业员选择"
                             android:textColor="@color/white"
                             android:background="@color/bg_orange"

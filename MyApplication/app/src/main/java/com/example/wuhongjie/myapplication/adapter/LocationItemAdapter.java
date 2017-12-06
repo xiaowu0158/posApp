@@ -55,11 +55,11 @@ public class LocationItemAdapter extends BaseAdapter{
         ViewHolder holder;
         if(convertView==null){
             holder=new ViewHolder();
-            convertView = mInflater.inflate(R.layout.setting_grid_view_item, null);
+            convertView = mInflater.inflate(R.layout.setting_grid_view_item1, null);
             holder.title= (TextView) convertView
-                    .findViewById(R.id.yxgs_item);
+                    .findViewById(R.id.item);
             holder.layout=(LinearLayout) convertView
-                    .findViewById(R.id.yxgs_item_line);
+                    .findViewById(R.id.item_line);
             convertView.setTag(holder);
         }else{
             holder = (ViewHolder) convertView.getTag();

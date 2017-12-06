@@ -1,6 +1,7 @@
 package com.example.wuhongjie.myapplication;
 
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.DataSetObserver;
@@ -65,6 +66,8 @@ public class CounterActivity extends AppCompatActivity {
     private static int RLB_PROD_POST_INNER = 1802;
     private static int RLB_PROD_POST_CUST = 1702;
     private static int AVL_TPP_POST = 1903;
+    private static int SELLER_POST = 1904;
+    private static int LOCATION_POST = 1905;
     public static final int REQUEST_VIP = 10;
     public static final int REQUEST_WAREH_STK = 11;
     private String deviceCashId = "";
@@ -76,7 +79,9 @@ public class CounterActivity extends AppCompatActivity {
     private RecordSet tppRs = new RecordSet();
     private RecordSet policyStructureRs = new RecordSet();
     private RecordSet locationRs=new RecordSet();
+    private Record locationRc=null;
     private RecordSet sellerRs=new RecordSet();
+    private Record sellerRc=null;
     private Record vipRc;
     private Record productRc;
     private KeyboardView keyboardView;
@@ -85,6 +90,7 @@ public class CounterActivity extends AppCompatActivity {
     private ListView rlbDtlListView;
     private RecordSet rlbDtlRs = new RecordSet();
     private RlbDtlItemAdapter rlbDtlListAdapter;
+    private Dialog mWeiboDialog;
     private TextView totalQtyTextView;
     private TextView totalValTextView;
     private TextView totalDiscountTextView;
@@ -111,15 +117,15 @@ public class CounterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_counter);
-        //contentView=LayoutInflater.from(context).inflate(layoutRes, null, false);
+
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         String deviceId = Settings.Secure.getString(this.getContentResolver(), Settings.Secure.ANDROID_ID);
         String deviceName = Build.MODEL;
         deviceCashId = deviceName.replace(" ", "-").toUpperCase() + "-" + deviceId.toUpperCase();
         counterTitleTextView=(TextView) findViewById(R.id.counterTitleTextView);
-        //setTitle(deviceId);
+
         counterTitleTextView.setText(deviceId);
-        // setTitle("【S00743】萧山市心广场专卖店       【会计日期：2017-10-23】");
+
         initData();
         initView();
 
@@ -194,6 +200,7 @@ public class CounterActivity extends AppCompatActivity {
         mSearchHandler = new Handler() {
             public void handleMessage(Message msg) {
                 if (msg.arg1 == DxSessionHelper.SESSION_ERROR) {
+                    WeiboDialogUtils.closeDialog(mWeiboDialog);
                     AlertDialog.Builder builder = new AlertDialog.Builder(CounterActivity.this);
                     builder.setMessage(msg.obj.toString());
                     builder.setTitle("提示");
@@ -207,10 +214,12 @@ public class CounterActivity extends AppCompatActivity {
 
                 }
                 if (msg.arg1 == DxSessionHelper.SESSION_ERROR_TOASE) {
+                    WeiboDialogUtils.closeDialog(mWeiboDialog);
                     Toast.makeText(CounterActivity.this, msg.obj.toString(),
                             Toast.LENGTH_SHORT).show();
                 }
                 if (msg.arg1 == COUNT_INIT) {
+                    WeiboDialogUtils.closeDialog(mWeiboDialog);
                     Date fsclDate = shopRs.getRecord(0).getField("FSCL_DATE").getDate();
                     String shopName = null;
                     try {
@@ -222,9 +231,6 @@ public class CounterActivity extends AppCompatActivity {
                     counterTitleTextView.setText("【" + shopRs.getRecord(0).getField("SHOP_NUM").getString() + "】" +
                             shopName + "   会计日期：" +
                             sdf.format(fsclDate));
-                    //setTitle("【" + shopRs.getRecord(0).getField("SHOP_NUM").getString() + "】" +
-                    //        shopName + "   会计日期：" +
-                    //        sdf.format(fsclDate));
                     locAdopted=true;
                     if(locationRs.recordCount()<=0){
                         locAdopted=false;
@@ -235,15 +241,19 @@ public class CounterActivity extends AppCompatActivity {
                     }
                     if(!locAdopted){
                         btn_selectLocation.setVisibility(View.GONE);
+                    }else{
+                        btn_selectLocation.setVisibility(View.VISIBLE);
                     }
 
                     loadAvlTpp(mSearchHandler);
                 }
                 if (msg.arg1 == AVL_TPP_POST) {
+                    WeiboDialogUtils.closeDialog(mWeiboDialog);
                     Toast.makeText(CounterActivity.this, "促销加载完成",
                             Toast.LENGTH_SHORT).show();
                 }
                 if (msg.arg1 == RLB_PROD_POST) {
+                    WeiboDialogUtils.closeDialog(mWeiboDialog);
                     if(msg.arg2 == RLB_PROD_POST){
                         rlbDtlListAdapter = new RlbDtlItemAdapter(rlbDtlRs, avlTppRs, masterRs, tppRs, mSearchHandler,(YoungorApplication)getApplication(), CounterActivity.this);
                         //rlbDtlListAdapter.registerDataSetObserver(sumObserver);
@@ -291,12 +301,45 @@ public class CounterActivity extends AppCompatActivity {
                         policyLinearLayout.setVisibility(View.GONE);
                     }
                 }
+                if(msg.arg1 == SELLER_POST){
+                    WeiboDialogUtils.closeDialog(mWeiboDialog);
+                    sellerRc=(Record)msg.obj;
+                    String seller="";
+                    try{
+                        if(sellerRc!=null&&!sellerRc.getField("EMPL_NAME").isNull()){
+                            seller=new String(sellerRc.getField("EMPL_NAME").getBytes(),"GBK");
+                        }else {
+                            seller="营业员选择";
+                        }
+                    }catch (UnsupportedEncodingException e) {
+                        e.printStackTrace();
+                    }
+                    btn_selectSeller.setText(seller);
+
+                }
+                if(msg.arg1 == LOCATION_POST){
+                    WeiboDialogUtils.closeDialog(mWeiboDialog);
+                    locationRc=(Record)msg.obj;
+                    String loc="";
+                    try{
+                        if(locationRc!=null&&!locationRc.getField("LOC_NAME").isNull()) {
+                            loc = new String(locationRc.getField("LOC_NAME").getBytes(), "GBK");
+                        }else{
+                            loc="货位选择";
+                        }
+                    }catch (UnsupportedEncodingException e) {
+                        e.printStackTrace();
+                    }
+                    btn_selectLocation.setText(loc);
+
+                }
             }
         };
     }
 
     //判断收银机是否绑定
     private void checkCashReg(final Handler handler) {
+        mWeiboDialog = WeiboDialogUtils.createLoadingDialog(CounterActivity.this, "正在绑定收银机...");
         new Thread() {
             public void run() {
                 Message msg = null;
@@ -343,6 +386,7 @@ public class CounterActivity extends AppCompatActivity {
     }
 
     private void loadAvlTpp(final Handler handler) {
+        mWeiboDialog = WeiboDialogUtils.createLoadingDialog(CounterActivity.this, "正在加载促销方案...");
         new Thread() {
             public void run() {
                 Message msg = null;
@@ -395,6 +439,7 @@ public class CounterActivity extends AppCompatActivity {
     }
 
     private void postRlbDtl(final Handler handler, final String prodCode) {
+        mWeiboDialog = WeiboDialogUtils.createLoadingDialog(CounterActivity.this, "正在提交...");
         new Thread() {
             public void run() {
                 Message msg = null;
@@ -469,6 +514,7 @@ public class CounterActivity extends AppCompatActivity {
 
     }
     private void postCust(final Handler handler){
+        mWeiboDialog = WeiboDialogUtils.createLoadingDialog(CounterActivity.this, "正在加载顾客信息...");
         new Thread() {
             public void run(){
                 Message msg = null;
@@ -672,7 +718,6 @@ public class CounterActivity extends AppCompatActivity {
     private class SellerSelectButtonClick implements View.OnClickListener {
         @Override
         public void onClick(View view) {
-            System.out.println("营业员列表："+sellerRs.recordCount());
             SellerWindow sellerWindow = new SellerWindow(CounterActivity.this, mSearchHandler,sellerRs,
                     1000, 900);
             sellerWindow.showAsDropDown(btn_selectSeller);
@@ -681,10 +726,9 @@ public class CounterActivity extends AppCompatActivity {
     private class LocationSelectButtonClick implements View.OnClickListener {
         @Override
         public void onClick(View view) {
-            Intent intent = new Intent();
-            intent.setClass(CounterActivity.this, WarehstkSearchActivity.class);
-            intent.putExtra("shop", shopRs);
-            startActivityForResult(intent, REQUEST_WAREH_STK);
+            LocationWindow locationWindow = new LocationWindow(CounterActivity.this, mSearchHandler,locationRs,
+                    1000, 900);
+            locationWindow.showAsDropDown(btn_selectLocation);
         }
     }
     private KeyboardView.OnKeyboardActionListener keyListener = new KeyboardView.OnKeyboardActionListener() {
