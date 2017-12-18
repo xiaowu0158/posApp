@@ -337,7 +337,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center|right"
                 android:paddingRight="30.0px"
-                android:text="服务热线 0574-56198574"
+                android:text="QQ 87408696"
                 android:textColor="@color/white"
                 android:textSize="24.0sp" />
 
@@ -356,7 +356,18 @@
                 android:layout_toRightOf="@id/line"
                 android:gravity="center_vertical"
                 android:paddingLeft="30.0px"
-                android:text="www.crosslink.com"
+                android:text="http://xiaowu5w.isitestar.cn/"
+                android:textColor="@color/white"
+                android:textSize="24.0sp" />
+
+            <TextView
+                android:id="@+id/pulic_num_text2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/pulic_num_text"
+                android:gravity="center_vertical"
+                android:paddingLeft="30.0px"
+                android:text="吴红杰"
                 android:textColor="@color/white"
                 android:textSize="24.0sp" />
         </RelativeLayout>
